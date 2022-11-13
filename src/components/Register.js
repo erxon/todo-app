@@ -7,6 +7,7 @@ import { VisibilityOff } from "@mui/icons-material";
 import styles from "../styles/styles.forms";
 import {Button} from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const Register = () => {
 
@@ -57,9 +58,11 @@ const Register = () => {
             <br />
             <button style={styles.buttonStyle}>Signup</button>
             <br />
-            <Button startIcon={<ArrowBack />}>
-                Back
-            </Button>
+            <Link style={{textDecoration: "none"}} to="/">
+                <Button sx={{m: 1, color: "#1E1E1E"}} size="small" startIcon={<ArrowBack />}>
+                    Back
+                </Button>
+            </Link>
         </div>
     </div>
 }

@@ -21,6 +21,9 @@ const styles = {
         cursor: "pointer",
         fontSize: "14px",
         marginTop: "24px"
+    },
+    accentColor: {
+        color: "#16C0D8"
     }
 };
 
