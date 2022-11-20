@@ -1,6 +1,7 @@
 body{
     font-family: 'Poppins', sans-serif;
     color: #1E1E1E;
+    background-color: #ededed
 
 }
 
@@ -21,4 +22,8 @@ p{
 .button{
     background-color: #16C0D8;
     color: #fff;
+}
+
+.tab:hover{
+    background-color: #16C0D8;
 }

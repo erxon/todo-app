@@ -1,12 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 import CreateTask from "./Task/CreateTask";
 import TaskProperties from "./TaskProperties/TaskProperties";
+import Collection from "./Collection/Collection";
+import { Grid } from "@mui/material";
+
 function Home () {
+    const [showTaskProp, setShowTaskProp] = useState(false);
 
     return <div>
         <h1>Everything will be here</h1>
-        <TaskProperties />
-        <CreateTask />
+        <Grid container spacing={2}>
+            <Grid item xs={4}>
+                <Collection />
+            </Grid>
+            <Grid item xs={8}>
+                { showTaskProp ? <TaskProperties /> : null }
+                <CreateTask onClickHandle={() => {setShowTaskProp(!showTaskProp)}} />
+            </Grid>
+        </Grid>
     </div>
 }
 

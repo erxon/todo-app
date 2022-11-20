@@ -1,10 +1,10 @@
 import React from "react";
 import dayjs from 'dayjs';
-import {Button} from "@mui/material";
 import { TextField } from "@mui/material";
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from "@mui/x-date-pickers";
+import styles from "../../styles/styles.forms";
 
 function TaskProperties() {
     //For Date and Time picker
@@ -14,8 +14,14 @@ function TaskProperties() {
         setValue(newValue);
     };
 
-    return <div>
-        <div>
+    return <div style={{
+        boxShadow: "0px 5px 10px #b5b5b5",
+        width: "20rem",
+        display: "flex",
+        justifyContent: "center"
+
+        }}>
+        <div style={{padding: "30px"}}>
             {/*Task properties fields*/}
             <TextField 
                 sx={{width: "25ch"}}
@@ -23,8 +29,7 @@ function TaskProperties() {
                 label="Task" 
                 variant="standard"
                 margin="dense"
-                multiline
-                 />
+                multiline />
             <br />
             <TextField 
                 sx={{width: "25ch"}}
@@ -43,7 +48,7 @@ function TaskProperties() {
                 multiline />
             <br />
             {/*Date and Time picker*/}
-            <div>
+            <div style={{marginTop: "20px", marginBottom: "20px"}}>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DateTimePicker
                         label="Date&Time picker"
@@ -54,8 +59,8 @@ function TaskProperties() {
                 </LocalizationProvider>
             </div>
             {/*Buttons - Add and Cancel*/}
-            <Button>Add</Button>
-            <Button>Cancel</Button>
+            <button style={styles.buttonStyle}>ADD</button>
+            <button style={styles.cancelButton}>CANCEL</button>
         </div>
     </div>
 }
