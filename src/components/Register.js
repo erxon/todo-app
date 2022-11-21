@@ -56,7 +56,7 @@ const Register = () => {
                   }}
             />
             <br />
-            <button style={styles.buttonStyle}>Signup</button>
+            <Button sx={{mt: 2}} style={styles.buttonStyle}>Signup</Button>
             <br />
             <Link style={{textDecoration: "none"}} to="/">
                 <Button sx={{m: 1, color: "#1E1E1E"}} size="small" startIcon={<ArrowBack />}>

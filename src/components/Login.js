@@ -4,6 +4,7 @@ import { InputAdornment } from "@mui/material";
 import {IconButton} from "@mui/material";
 import Visibility from '@mui/icons-material/Visibility';
 import { VisibilityOff } from "@mui/icons-material";
+import {Button} from "@mui/material";
 import styles from "../styles/styles.forms";
 
 const Login = () => {
@@ -46,7 +47,7 @@ const Login = () => {
             <p style={styles.smallParagraph}>forgot password? <a href="#" style={styles.link}>Click here</a></p>
             <p>Do not have an account yet? <a href="/register" style={styles.link}>Signup</a></p>
 
-            <button style={styles.buttonStyle}>Login</button>
+            <Button style={styles.buttonStyle}>Login</Button>
         </div>
     </div>
 }
