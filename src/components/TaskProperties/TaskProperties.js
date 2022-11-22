@@ -30,7 +30,6 @@ function TaskProperties() {
     }
     //Pass the array to TaskMany component
     
-
     //For Date and Time picker
     // const [value, setValue] = useState(dayjs('2014-08-18T21:11:54'));
 
@@ -41,7 +40,8 @@ function TaskProperties() {
     };
 
     return <div style={{
-        boxShadow: "0px 5px 10px #b5b5b5",
+        backgroundColor: "#fff",
+        boxShadow: "0px 5px 10px #dfdfdf",
         width: "20rem",
         display: "flex",
         justifyContent: "center"
