@@ -7,6 +7,7 @@ import TaskMany from "./Task/TaskMany";
 
 function Home () {
     const [showTaskProp, setShowTaskProp] = useState(false);
+    const [tasks, setTasks] = useState([]);
 
     return <div>
         <h1>Everything will be here</h1>
@@ -15,8 +16,8 @@ function Home () {
                 <Collection />
             </Grid>
             <Grid item xs={8}>
-                <TaskMany />
-                { showTaskProp ? <TaskProperties /> : null }
+                <TaskMany tasks={tasks} setTasks={setTasks}/>
+                { showTaskProp ? <TaskProperties tasks={tasks} sendTasks={setTasks} /> : null }
                 <CreateTask onClickHandle={() => {setShowTaskProp(!showTaskProp)}} />
             </Grid>
         </Grid>

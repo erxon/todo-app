@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, {useState} from "react";
 import dayjs from 'dayjs';
 import { TextField } from "@mui/material";
@@ -8,28 +9,28 @@ import {Button} from "@mui/material";
 import styles from "../../styles/styles.forms";
 
 
-function TaskProperties() {
+function TaskProperties(props) {
     //Create object to store properties of a task
     const [task, setTask] = useState({
+        id: "",
         task: "",
         description: "",
         collection: "",
         dateAndTime: dayjs('2014-08-18T21:11:54')
     });
+    let temporaryId = props.tasks.length;
     //Create array to store collection of tasks after submition
-    let tasks = [];
     const handleFieldChange = (event) => {
         const {name, value} = event.target;
+
         setTask((prevValue) => {
-            return {...prevValue, [name]: value}
+            return {...prevValue, id: `${temporaryId}`, [name]: value}
         });
     }
     const handleSubmit = () => {
-        tasks.push(task);
-        console.log(tasks);
+        props.sendTasks((prevValues) => {return [...prevValues, task]});
     }
     //Pass the array to TaskMany component
-    
     //For Date and Time picker
     // const [value, setValue] = useState(dayjs('2014-08-18T21:11:54'));
 

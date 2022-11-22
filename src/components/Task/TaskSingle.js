@@ -29,7 +29,7 @@ function TaskSingle(props){
                 onMouseLeave={() => {setChecked(false)}}
                 onClick={() => {props.onHandleCheck(props.id)}}
                 />
-            <p>{props.task} <span style={{fontWeight: "bold"}}>{props.dateAndTime}</span></p>
+            <p>{props.task} <span style={{fontWeight: "bold"}}>3 pm</span></p>
     </div>
 }
 
