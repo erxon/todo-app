@@ -22,6 +22,7 @@ function TaskMany(props){
                         id={task.id}
                         task={task.task}
                         dateAndTime={task.dateAndTime}
+                        endTime={task.endTime}
                         onHandleCheck={handleCheck}
                         />
         })}

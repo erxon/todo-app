@@ -2,24 +2,37 @@
 import React, {useState} from "react";
 import dayjs from 'dayjs';
 import { TextField } from "@mui/material";
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { DateTimePicker} from '@mui/x-date-pickers/DateTimePicker';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from "@mui/x-date-pickers";
+import updateLocale from "dayjs/plugin/updateLocale";
 import {Button} from "@mui/material";
 import styles from "../../styles/styles.forms";
 
 
 function TaskProperties(props) {
     //Create object to store properties of a task
+    // For Date and Time picker
+    dayjs.extend(updateLocale);
+    dayjs.updateLocale('en', {
+        monthsShort: [
+          "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ]
+    });
+    const [value, setValue] = useState(dayjs('2014-08-18T21:11:54'));
     const [task, setTask] = useState({
         id: "",
         task: "",
         description: "",
         collection: "",
-        dateAndTime: dayjs('2014-08-18T21:11:54')
+        dateAndTime: value,
+        endTime: value
     });
     let temporaryId = props.tasks.length;
-    //Create array to store collection of tasks after submition
+
+    //Handle changes in fields
     const handleFieldChange = (event) => {
         const {name, value} = event.target;
 
@@ -27,16 +40,22 @@ function TaskProperties(props) {
             return {...prevValue, id: `${temporaryId}`, [name]: value}
         });
     }
-    const handleSubmit = () => {
-        props.sendTasks((prevValues) => {return [...prevValues, task]});
-    }
-    //Pass the array to TaskMany component
-    //For Date and Time picker
-    // const [value, setValue] = useState(dayjs('2014-08-18T21:11:54'));
 
+    //Handle submission
+    const handleSubmit = () => {
+        //Pass the array to TaskMany component
+        props.sendTasks((prevValues) => {return [...prevValues, task]});
+        props.show(false);
+    }
+    
+    
+    //Change handlers for date and time
     const handleDateAndTime = (newValue) => {
+        setValue(newValue);
+    };
+    const handleEndTime = (newValue) => {
         setTask((prevValue) => {
-            return {...prevValue, dateAndTime: newValue}
+            return {...prevValue, endTime: newValue}
         });
     };
 
@@ -88,10 +107,18 @@ function TaskProperties(props) {
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DateTimePicker
                         label="Date&Time picker"
-                        value={task.dateAndTime}
+                        value={value}
                         onChange={handleDateAndTime}
                         renderInput={(params) => <TextField {...params} />}
                     />
+                    <div style={{marginTop: "10px"}}>
+                        <TimePicker
+                            label="End Time"
+                            value={task.endTime}
+                            onChange={handleEndTime}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </div>
                 </LocalizationProvider>
             </div>
             {/*Buttons - Add and Cancel*/}

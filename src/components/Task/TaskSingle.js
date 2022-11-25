@@ -7,13 +7,11 @@ function TaskSingle(props){
     const [checked, setChecked] = useState(false);
 
     const styles = {
-        padding: "0px 10px",
         borderBottom: "1px solid #b5b5b5",
         width: "50%",
-        marginBottom: "10px",
-        display: "flex"
+        display: "flex",
     }
-
+    
     return <div style={styles}>
             {/* <div onMouseOver={()=>{setShow(true)}} onMouseLeave={()=>{setShow(false)}}>
                 <input className="checkbox" 
@@ -28,8 +26,9 @@ function TaskSingle(props){
                 onMouseOver={() => {setChecked(true)}}
                 onMouseLeave={() => {setChecked(false)}}
                 onClick={() => {props.onHandleCheck(props.id)}}
+                sx={{mt: 1, mb: 1}}
                 />
-            <p>{props.task} <span style={{fontWeight: "bold"}}>3 pm</span></p>
+            <p>{props.task}</p>
     </div>
 }
 
