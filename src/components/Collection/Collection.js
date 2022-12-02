@@ -1,33 +1,35 @@
-import React, {useState} from "react";
-import Tab from "./Tab";
+import React from "react";
+import {Box} from "@mui/material";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 function Collection(){
-    const [active, setActive] = useState("home");
-
-    const handleClick = (tabClicked) => {
-        setActive(tabClicked);
-    }
-
-    const styles = {
-        backgroundColor: "#256D85",
-        color: "#fff",
-        height: "30rem",
-        padding: "1.5rem",
-    }
-
-    return <div style={styles}>
-        <h2>Collections</h2>
-        <Tab 
-            name="home" 
-            active={active === "home" ? true : false}
-            onHandleClick={handleClick}
-        />
-        <Tab 
-            name="school" 
-            active={active === "school" ? true : false} 
-            onHandleClick={handleClick} 
-        />
-    </div> 
+    const [age, setAge] = React.useState('');
+    
+    const handleChange = (event) => {
+        setAge(event.target.value);
+      };
+      
+    return <div>
+        <Box>
+            <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={age}
+                        label="Age"
+                        onChange={handleChange}
+                    >
+                        <MenuItem value={10}>Ten</MenuItem>
+                        <MenuItem value={20}>Twenty</MenuItem>
+                        <MenuItem value={30}>Thirty</MenuItem>
+                    </Select>
+            </FormControl>
+        </Box>
+    </div>
 }
 
 export default Collection;

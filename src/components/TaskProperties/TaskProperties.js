@@ -11,6 +11,7 @@ import {Button} from "@mui/material";
 import styles from "../../styles/styles.forms";
 
 
+
 function TaskProperties(props) {
     //Create object to store properties of a task
     // For Date and Time picker
@@ -122,7 +123,7 @@ function TaskProperties(props) {
                 </LocalizationProvider>
             </div>
             {/*Buttons - Add and Cancel*/}
-            <Button style={styles.buttonStyle} onClick={handleSubmit}>ADD</Button>
+            <Button variant="contained" onClick={handleSubmit}>ADD</Button>
             <Button sx={{ml: 1}} style={styles.cancelButton}>CANCEL</Button>
         </div>
     </div>
